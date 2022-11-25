@@ -1,0 +1,9 @@
+.background-image img {
+  width: 600px;
+  filter: grayscale(100%);
+  opacity: 0.3;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}

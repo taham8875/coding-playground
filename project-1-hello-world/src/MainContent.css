@@ -1,0 +1,24 @@
+.main-content {
+  padding: 50px 20px;
+}
+
+.main-content h1 {
+  padding-bottom: 20px;
+}
+
+.main-content ul {
+  padding-left: 20px;
+}
+
+.main-content ul li {
+  padding: 10px 0;
+  display: list-item;
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.main-content ul li::marker {
+  color: #61dbfb;
+  margin-right: 20px;
+  font-size: 1.2rem;
+}

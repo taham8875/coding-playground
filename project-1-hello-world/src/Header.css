@@ -1,0 +1,18 @@
+.header {
+  background-color: #1d2025;
+}
+
+.header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.header img {
+  width: 70px;
+}
+
+.header h2 {
+  margin-right: auto;
+}
