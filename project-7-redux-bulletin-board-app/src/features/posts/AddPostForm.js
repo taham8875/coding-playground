@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postAdded } from "./postSlice";
+import { addNewPost } from "./postSlice";
 
 export default function AddPostForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
+  const [addNewRequest, setAddNewRequest] = useState("idle");
 
   const users = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
+  const canSave =
+    Boolean(title) &&
+    Boolean(content) &&
+    Boolean(userId) &&
+    addNewRequest === "idle";
 
   const onSavePostClick = () => {
-    if (!title || !content) {
-      window.alert("Empty title or content");
-    } else {
-      dispatch(postAdded(title, content, userId));
-      setTitle("");
-      setContent("");
+    if (canSave) {
+      try {
+        setAddNewRequest("pending");
+        dispatch(addNewPost({ title, body: content, userId: userId })).unwrap();
+        setTitle("");
+        setContent("");
+        setUserId("");
+      } catch (error) {
+        console.error("Failed to save the post", error);
+      } finally {
+        setAddNewRequest("idle");
+      }
     }
   };
-
-  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
 
   return (
     <div className="m-3 col col-lg-6">
