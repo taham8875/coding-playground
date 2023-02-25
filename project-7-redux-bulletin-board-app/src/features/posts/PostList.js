@@ -1,24 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionsButtons from "./ReactionsButtons";
-import { fetchPosts } from "./postSlice";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PostList() {
   const posts = useSelector((state) => state.posts.posts);
   const status = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPosts());
-    }
-  }, [status, dispatch]);
   let content;
 
   if (status === "loading") {
@@ -29,9 +21,15 @@ function PostList() {
         <article className="post border rounded p-3 mb-3" key={post.id}>
           <h3>{post.title}</h3>
           <p className="fs-4">{post.body}</p>
+          <Link to={`post/${post.id}`}>View Post</Link>
           <div className="mb-2">
             <PostAuthor userId={post.userId} />
-            <TimeAgo timeStamp={post.date} />
+            <Link
+              className="text-reset text-decoration-none"
+              to={`post/${post.id}`}
+            >
+              <TimeAgo timeStamp={post.date} />
+            </Link>
           </div>
           <ReactionsButtons post={post} />
         </article>

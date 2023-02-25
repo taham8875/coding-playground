@@ -30,6 +30,35 @@ export const addNewPost = createAsyncThunk(
   }
 );
 
+export const updatePost = createAsyncThunk(
+  "posts/updatePost",
+  async (updatedPost) => {
+    const { id } = updatedPost;
+    try {
+      const response = await axios.put(`${POSTS_URL}/${id}`, updatedPost);
+      console.log("response.data", response.data);
+      return response.data;
+    } catch (error) {
+      return error.message; // for real apis
+      // return updatedPost; // just for testing and working with jsonplaceholder fake api
+    }
+  }
+);
+
+export const deletePost = createAsyncThunk(
+  "posts/deletePost",
+  async (deletedPost) => {
+    const { id } = deletedPost;
+    try {
+      const response = await axios.delete(`${POSTS_URL}/${id}`);
+      if (response?.status === 200) return deletedPost;
+      return `${response?.status}, ${response?.statusText}`;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "posts",
   initialState,
@@ -75,10 +104,23 @@ const postSlice = createSlice({
           sad: 0,
         };
         state.posts.unshift(action.meta.arg);
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        let id = action.meta.arg.id;
+        id = Number(id);
+        state.posts.forEach(function (post, i) {
+          if (post.id == id) state.posts[i] = action.meta.arg;
+        });
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        let id = action.meta.arg.id;
+        id = Number(id);
+        const posts = state.posts.filter((post) => post.id !== id);
+        state.posts = posts;
       });
   },
 });
 
 export default postSlice.reducer;
 
-export const { postAdded, reactionAdded } = postSlice.actions;
+export const { reactionAdded } = postSlice.actions;
