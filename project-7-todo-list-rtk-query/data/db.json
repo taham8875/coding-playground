@@ -1,0 +1,25 @@
+{
+  "todos": [
+    {
+      "userId": 1,
+      "title": "Hello world 👋",
+      "complete": false,
+      "id": 1,
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "title": "task 1",
+      "complete": false,
+      "id": 2,
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "title": "task 3",
+      "complete": false,
+      "id": 3,
+      "completed": true
+    }
+  ]
+}
