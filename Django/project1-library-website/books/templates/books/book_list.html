@@ -1,0 +1,9 @@
+<h1>All books</h1>
+{% for book in book_list %}
+    <ul>
+        <li>title: {{ book.title }}</li>
+        <li>author: {{ book.author }}</li>
+        <li>price: {{ book.price }}</li>
+        <li>published: {{ book.published }}</li>
+    </ul>
+{% endfor %}
