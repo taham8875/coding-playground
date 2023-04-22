@@ -44,6 +44,13 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
+# only authenticated users can access the API
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
