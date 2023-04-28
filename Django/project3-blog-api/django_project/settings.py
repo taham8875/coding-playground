@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "drf_spectacular",
 ]
 
 # only authenticated users can access the API
@@ -59,6 +60,13 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API",
+    "DESCRIPTION" : "A sample blog to learn about DRF",
+    "VERSION": "1.0.0",
 }
 
 
