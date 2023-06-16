@@ -1,0 +1,29 @@
+form .faLocationDot{
+  color: #06283D;
+  font-size: 1.5rem;
+}
+
+form input{
+  width: 80%;
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #06283D;
+}
+
+form button{
+  width: 25px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: #06283d4d;
+  border-radius: 50%;
+  height: 25px;
+}
+
+form .faMagnifyingGlass {
+  color: #06283D;
+}
+

@@ -1,0 +1,22 @@
+.weather-image{
+  width: 100px;
+}
+
+.weather-data .temprature {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #041825;
+  font-weight: 600;
+
+}
+
+.weather-data .temprature::after{
+  content: "°C";
+  font-size: 0.7rem;
+  font-weight: 600;
+  position: absolute;
+}
+
+.humidity-and-temprature {
+  font-size: 0.7rem;
+}
