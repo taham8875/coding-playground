@@ -9,7 +9,7 @@ export default function Header() {
         <div className="container">
           <img src={logo} alt="logo" />
           <h2>ReactFacts</h2>
-          <h3>Frist React project</h3>
+          <h3>First React project</h3>
         </div>
       </div>
     </>
