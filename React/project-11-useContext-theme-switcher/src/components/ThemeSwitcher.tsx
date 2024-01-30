@@ -1,9 +1,7 @@
-import React from "react";
-import { useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
+import useTheme from "../hooks/useTheme";
 
 function ThemeSwitcher() {
-  const [theme, setTheme] = useContext(ThemeContext);
+  const [theme, setTheme] = useTheme();
 
   const style = {
     backgroundColor: theme === "light" ? "#fff" : "#000",
