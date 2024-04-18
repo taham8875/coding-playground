@@ -1,0 +1,6 @@
+:scheduler:
+  :schedule:
+    post_publish:
+      cron: '*/1 * * * *'
+      class: PostPublishScheduler
+      queue: default
